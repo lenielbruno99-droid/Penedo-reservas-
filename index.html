@@ -285,8 +285,8 @@ const POUSADAS = [
     id:"alto", nome:"Pousada no Alto Penedo", tipo:"Pousada",
     local:"Estrada da Fazendinha, bem pertinho da Cachoeira de Deus",
     desc:"O sossego que você espera de Penedo, no alto da serra. Todas as acomodações com café da manhã incluso.",
-    tags:["cafe","lareira","hidro"],
-    comodidades:["Café da manhã incluso","Suítes com lareira","Chalés com hidromassagem","Perto da cachoeira"],
+    tags:["piscina","cafe","lareira","hidro"],
+    comodidades:["Café da manhã incluso","Piscina com vista pra mata","Suítes com lareira","Varanda com vista","Chalés com hidromassagem","Frigobar e TV","Perto da cachoeira"],
     fotos:[{t:"A pousada",u:"https://photos.app.goo.gl/5Q3gVPF9bcWK3tf66"}],
     quartos:[
       {nome:"Suíte Standard",sub:"Suítes 2, 3, 4 e 7 · sem lareira",d1:299,d2:598,fotos:"https://photos.app.goo.gl/S4BKPfp3MPakRjEX8"},
@@ -296,6 +296,8 @@ const POUSADAS = [
       {nome:"Chalé com hidro simples",sub:"Banheira de hidromassagem individual",d1:345,d2:690,fotos:"https://photos.app.goo.gl/h57292L4drzNSyGq7"},
       {nome:"Chalé com hidro dupla",sub:"Banheira de hidromassagem para o casal",d1:386,d2:772,fotos:"https://photos.app.goo.gl/mhtYshpg9vpVaqLr5"}
     ],
+    capa:"fotos/alto/a01.jpg",
+    galeria:Array.from({length:27},(_,i)=>`fotos/alto/a${String(i+1).padStart(2,"0")}.jpg`),
     cena:1
   },
   {
