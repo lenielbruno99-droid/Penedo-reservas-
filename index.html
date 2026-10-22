@@ -83,6 +83,21 @@ section{padding-block:48px}
 .chip{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font:500 .88rem var(--body);cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--forest);border-color:var(--forest);color:var(--forest-ink)}
 
+/* painel de categorias */
+.cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:28px}
+@media (max-width:640px){.cats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cat{display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:var(--r);padding:16px;cursor:pointer;font:inherit;min-width:0}
+.cat svg{width:30px;height:30px;fill:none;stroke:var(--forest);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.cat b{font-family:var(--display);font-size:1.05rem;letter-spacing:.02em}
+.cat small{color:var(--muted);font-size:.8rem}
+.cat:hover{border-color:var(--forest)}
+.cat[aria-pressed="true"]{background:var(--forest);border-color:var(--forest);color:var(--forest-ink)}
+.cat[aria-pressed="true"] svg{stroke:var(--forest-ink)}
+.cat[aria-pressed="true"] small{color:var(--forest-ink);opacity:.85}
+.cat-title{font-family:var(--display);font-size:1.25rem;margin:0 0 16px}
+.empty-cat{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r);padding:28px 22px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.empty-cat p{margin:0;color:var(--muted);max-width:52ch}
+
 /* cards */
 .list{display:grid;gap:26px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:1fr}
@@ -213,32 +228,23 @@ footer a{text-decoration:underline}
   </div>
 </div>
 
-<div class="dates" role="region" aria-label="Suas datas">
-  <div class="wrap">
-    <div class="lbl">Já sabe as datas? Elas vão junto na mensagem.</div>
-    <div class="field"><label for="ci">Check-in</label><input id="ci" type="date"></div>
-    <div class="field"><label for="co">Check-out</label><input id="co" type="date"></div>
-    <div class="field"><label for="gs">Hóspedes</label>
-      <select id="gs"><option value="">Selecione</option><option>1 adulto</option><option selected>2 adultos</option><option>2 adultos + 1 criança</option><option>3 adultos</option><option>4 adultos</option><option>Família / grupo maior</option></select>
-    </div>
-  </div>
-</div>
 
 <section>
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Como funciona</span><h2>Reservar comigo é simples</h2></div>
     <ol class="steps">
-      <li><span class="n">1</span><div><b>Escolha a hospedagem</b><span>Veja fotos, comodidades e valores de cada opção abaixo.</span></div></li>
-      <li><span class="n">2</span><div><b>Toque em "Quero reservar"</b><span>Abre meu WhatsApp com a pousada e suas datas já escritas.</span></div></li>
-      <li><span class="n">3</span><div><b>Eu confirmo e reservo</b><span>Verifico a disponibilidade e passo o valor final para as suas datas.</span></div></li>
+      <li><span class="n">1</span><div><b>Escolha o tipo</b><span>Pousada, casa, sítio ou apartamento. Veja as fotos de cada opção.</span></div></li>
+      <li><span class="n">2</span><div><b>Toque em "Consultar valores"</b><span>Abre meu WhatsApp já com o nome da hospedagem que você escolheu.</span></div></li>
+      <li><span class="n">3</span><div><b>Eu confirmo e reservo</b><span>Me passa as datas e eu te mando valores e disponibilidade.</span></div></li>
     </ol>
   </div>
 </section>
 
 <section id="hospedagens" style="padding-top:8px">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Parceiros Penedo Reservas</span><h2>Hospedagens disponíveis</h2></div>
-    <div class="chips" role="group" aria-label="Filtrar hospedagens" id="chips"></div>
+    <div class="sec-head"><span class="eyebrow">Parceiros Penedo Reservas</span><h2>Que tipo de hospedagem você procura?</h2></div>
+    <div class="cats" role="group" aria-label="Tipo de hospedagem" id="cats"></div>
+    <h3 class="cat-title" id="cat-title"></h3>
     <div class="list" id="list"></div>
   </div>
 </section>
@@ -273,7 +279,7 @@ const POUSADAS = [
     id:"viking", nome:"Pousada Viking", tipo:"Pousada",
     local:"Perto da Casa do Chocolate, a poucos minutos do centrinho de Penedo",
     desc:"Conforto, lazer e tranquilidade para aproveitar Penedo, com piscina ao ar livre e café da manhã.",
-    tags:["piscina","cafe"],
+    cat:"pousadas",
     comodidades:["Piscina ao ar livre","Café da manhã","Estacionamento grátis","Wi-Fi grátis","Cama box queen","Ar-condicionado split","TV LED","Frigobar","Banheiro privativo"],
     fotos:[{t:"Suíte Standard",u:"https://photos.app.goo.gl/wHHCmXxYJu86KxMs9"}],
     quartos:[{nome:"Suíte Standard",sub:"Cama box queen, ar split, TV e frigobar",fotos:"https://photos.app.goo.gl/wHHCmXxYJu86KxMs9"}],
@@ -285,7 +291,7 @@ const POUSADAS = [
     id:"alto", nome:"Pousada no Alto Penedo", tipo:"Pousada",
     local:"Estrada da Fazendinha, bem pertinho da Cachoeira de Deus",
     desc:"A pousada no sossego que você espera de Penedo, bem pertinho da Cachoeira de Deus. Todas as acomodações com café da manhã.",
-    tags:["piscina","cafe","lareira","hidro"],
+    cat:"pousadas",
     comodidades:["Café da manhã incluso","Piscina com vista pra mata","Suítes com lareira","Varanda com vista","Chalés com hidromassagem","Frigobar e TV","Perto da cachoeira"],
     fotos:[{t:"A pousada",u:"https://photos.app.goo.gl/5Q3gVPF9bcWK3tf66"}],
     quartos:[
@@ -305,7 +311,7 @@ const POUSADAS = [
     id:"aurora", nome:"Pousada Aurora da Mantiqueira", tipo:"Pousada",
     local:"A menos de 2 km do centro de Penedo",
     desc:"Conforto, natureza e hospitalidade, com café da manhã caseiro e muita área verde. Valores para casal com café.",
-    tags:["piscina","cafe"],
+    cat:"pousadas",
     comodidades:["Piscina","Café da manhã caseiro","Área verde","Campinho","Estacionamento seguro","Ar-condicionado","Frigobar","TV"],
     fotos:[
       {t:"Área externa",u:"https://photos.app.goo.gl/5L3UUfwF2GDg1ggg9"},
@@ -316,23 +322,20 @@ const POUSADAS = [
     cena:2
   }
 ];
-const FILTROS = [["todas","Todas"],["piscina","Com piscina"],["cafe","Com café da manhã"],["lareira","Com lareira"],["hidro","Com hidro"]];
+const CATEGORIAS = [
+  {id:"pousadas",nome:"Pousadas",um:"pousada",icone:'<path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6M9 11h.01M15 11h.01"/>'},
+  {id:"casas",nome:"Casas",um:"casa",icone:'<path d="M3 11l9-7 9 7M5 9.5V21h14V9.5M10 21v-5h4v5"/>'},
+  {id:"sitios",nome:"Sítios",um:"sítio",icone:'<path d="M2 21h20M7 21V11l-4 2M7 11l5-4 5 4v10M17 13l4 2M12 3v4M10 16h4v5h-4z"/>'},
+  {id:"apartamentos",nome:"Apartamentos",um:"apartamento",icone:'<path d="M5 21V3h14v18M3 21h18M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M11 21v-3h2v3"/>'}
+];
 
 /* ===== daqui pra baixo não precisa mexer ===== */
 const brl = n => n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 const fmtData = v => v ? v.split("-").reverse().join("/") : "";
-function datasTxt(){
-  const ci=fmtData(document.getElementById("ci").value), co=fmtData(document.getElementById("co").value), g=document.getElementById("gs").value;
-  let t="";
-  if(ci||co) t+=`\nDatas: ${ci||"?"} a ${co||"?"}`;
-  if(g) t+=`\nHóspedes: ${g}`;
-  return t;
-}
 function waLink(pousada, quarto){
   let msg = "Olá, Jussara! Vi o site do Penedo Reservas";
   if(pousada) msg += ` e tenho interesse na ${pousada}` + (quarto?` (${quarto})`:"") + ".";
   else msg += " e quero ajuda para encontrar uma hospedagem em Penedo.";
-  msg += datasTxt();
   msg += "\nPode me passar valores e disponibilidade?";
   return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 }
@@ -342,31 +345,22 @@ const CENAS = [
   `<path d="M0 220 V120 L90 60 L160 105 L240 40 L330 100 L400 70 V220 Z" fill="var(--m1)"/><path d="M0 220 V160 L120 125 L220 150 L320 118 L400 140 V220 Z" fill="var(--m2)"/><g fill="var(--m3)"><rect x="58" y="120" width="3" height="60"/><path d="M59.5 95 l-14 11 h28Z M59.5 105 l-17 12 h34Z M59.5 116 l-20 13 h40Z"/><rect x="338" y="118" width="3" height="60"/><path d="M339.5 92 l-14 11 h28Z M339.5 102 l-17 12 h34Z M339.5 113 l-20 13 h40Z"/></g><path d="M0 220 V190 L400 182 V220 Z" fill="var(--m3)"/>`,
   `<circle cx="300" cy="70" r="26" fill="#f6d79a" opacity=".9"/><path d="M0 220 V130 L100 85 L190 120 L280 75 L400 115 V220 Z" fill="var(--m1)"/><path d="M0 220 V165 L140 140 L260 160 L400 135 V220 Z" fill="var(--m2)"/><rect x="90" y="182" width="120" height="16" rx="8" fill="#7fc3d6"/><path d="M0 220 V200 L400 196 V220 Z" fill="var(--m3)"/>`
 ];
-let filtro="todas";
+let cat="pousadas";
 function render(){
   const list=document.getElementById("list");
-  const itens=POUSADAS.filter(p=>filtro==="todas"||p.tags.includes(filtro));
-  if(!itens.length){list.innerHTML=`<p class="empty">Nenhuma hospedagem com esse filtro ainda. Me chama no WhatsApp que eu procuro pra você.</p>`;return;}
+  const c=CATEGORIAS.find(x=>x.id===cat);
+  const itens=POUSADAS.filter(p=>p.cat===cat);
+  document.getElementById("cat-title").textContent=`${c.nome} em Penedo`;
+  document.querySelectorAll(".cat").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===cat));
+  if(!itens.length){list.innerHTML=`<div class="empty-cat"><b>Em breve, ${c.nome.toLowerCase()} aqui no site.</b><p>Já tenho opções de ${c.nome.toLowerCase()} em Penedo. Me chama no WhatsApp que eu te mando as fotos e os valores.</p><a class="btn btn-wa" data-wa-cat="${c.nome.toLowerCase()}" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Quero ver ${c.nome.toLowerCase()}</a></div>`;atualizarLinks();return;}
   list.innerHTML=itens.map(p=>{
-    const precos=p.quartos.filter(q=>q.d1).map(q=>q.d1);
-    const apartir=precos.length?`<div class="price-from">A partir de <strong>${brl(Math.min(...precos))}</strong> / diária, com café</div>`:`<div class="price-from">Valores sob consulta para as suas datas</div>`;
-    const quartos=p.quartos.map(q=>`
-      <div class="room">
-        <div><div class="nm">${esc(q.nome)}</div><div class="sub">${esc(q.sub||"")}</div></div>
-        <div class="pr">${q.d1?`<b>${brl(q.d1)}</b>1 diária${q.d2?`<br>${brl(q.d2)} · 2 diárias`:""}`:`<b>Consulte</b>valores`}</div>
-        <div class="acts">
-          ${q.fotos?`<a class="ph" href="${q.fotos}" target="_blank" rel="noopener">Ver fotos</a>`:""}
-          ${(q.extra||[]).map(e=>`<a class="ph" href="${e.u}" target="_blank" rel="noopener">${esc(e.t)}</a>`).join("")}
-          <a class="rs" data-p="${esc(p.nome)}" data-q="${esc(q.nome)}" href="#" target="_blank" rel="noopener">Quero reservar</a>
-        </div>
-      </div>`).join("");
     return `<article class="card">
       <div class="cover${p.capa?" photo":""}"${p.capa?` style="background-image:url('${p.capa}')"`:""}>
         ${p.capa?"":`<svg class="scene" viewBox="0 0 400 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${CENAS[p.cena%CENAS.length]}</svg>`}
         <span class="logo mark" aria-hidden="true"></span>
         <span class="tag">${esc(p.tipo)}</span>
         ${p.galeria?`<button class="gal" type="button" data-g="${p.id}" data-i="0"><svg><use href="#i-cam"/></svg>Ver as ${p.galeria.length} fotos</button>`:""}
-        <div class="albums">${p.fotos.map(f=>`<a href="${f.u}" target="_blank" rel="noopener"><svg><use href="#i-cam"/></svg>${esc(f.t)}</a>`).join("")}</div>
+        ${p.galeria?"":`<div class="albums">${p.fotos.map(f=>`<a href="${f.u}" target="_blank" rel="noopener"><svg><use href="#i-cam"/></svg>${esc(f.t)}</a>`).join("")}</div>`}
       </div>
       <div class="body">
         <h3>${esc(p.nome)}</h3>
@@ -374,10 +368,7 @@ function render(){
         <p class="desc">${esc(p.desc)}</p>
         ${p.galeria?`<div class="thumbs">${p.galeria.map((u,i)=>`<button type="button" data-g="${p.id}" data-i="${i}" aria-label="Foto ${i+1}"><img src="${u}" alt="" loading="lazy"></button>`).join("")}</div>`:""}
         <ul class="amen">${p.comodidades.map(c=>`<li>${esc(c)}</li>`).join("")}</ul>
-        ${apartir}
-        <div class="rooms">${quartos}</div>
-        ${precos.length?`<p class="note">Valores para casal, sujeitos a alteração em feriados e alta temporada.</p>`:""}
-        <a class="btn btn-wa" data-p="${esc(p.nome)}" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Consultar disponibilidade</a>
+        <a class="btn btn-wa" data-p="${esc(p.nome)}" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Consultar valores e disponibilidade</a>
       </div>
     </article>`;
   }).join("");
@@ -400,20 +391,23 @@ document.addEventListener("touchend",e=>{const d=document.getElementById("lb");i
 function atualizarLinks(){
   document.querySelectorAll("[data-wa='geral']").forEach(a=>a.href=waLink());
   document.querySelectorAll("[data-p]").forEach(a=>a.href=waLink(a.dataset.p,a.dataset.q));
+  document.querySelectorAll("[data-wa-cat]").forEach(a=>a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá, Jussara! Vi o site do Penedo Reservas e quero ver as opções de ${a.dataset.waCat} em Penedo. Pode me mandar?`)}`);
 }
-document.getElementById("chips").innerHTML=FILTROS.map(([k,l])=>`<button class="chip" type="button" data-f="${k}" aria-pressed="${k===filtro}">${l}</button>`).join("");
-document.getElementById("chips").addEventListener("click",e=>{
-  const b=e.target.closest(".chip"); if(!b) return;
-  filtro=b.dataset.f;
-  document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.f===filtro));
+function desenharCats(){
+  document.getElementById("cats").innerHTML=CATEGORIAS.map(c=>{
+    const n=POUSADAS.filter(p=>p.cat===c.id).length;
+    return `<button class="cat" type="button" data-c="${c.id}" aria-pressed="${c.id===cat}"><svg viewBox="0 0 24 24" aria-hidden="true">${c.icone}</svg><b>${c.nome}</b><small>${n?`${n} ${n>1?"opções":"opção"}`:"Fale comigo"}</small></button>`;
+  }).join("");
+}
+document.getElementById("cats").addEventListener("click",e=>{
+  const b=e.target.closest(".cat"); if(!b) return;
+  cat=b.dataset.c;
+  try{history.replaceState(null,"","#"+cat);}catch(_){}
   render();
 });
-["ci","co","gs"].forEach(id=>document.getElementById(id).addEventListener("change",()=>{
-  const ci=document.getElementById("ci"), co=document.getElementById("co");
-  if(id==="ci" && ci.value){ co.min=ci.value; if(co.value && co.value<=ci.value) co.value=""; }
-  atualizarLinks();
-}));
-document.getElementById("ci").min=new Date().toISOString().slice(0,10);
+const h=(location.hash||"").slice(1);
+if(CATEGORIAS.some(c=>c.id===h)) cat=h;
+desenharCats();
 render();
 </script>
 
