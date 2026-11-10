@@ -310,15 +310,17 @@ const POUSADAS = [
   {
     id:"aurora", nome:"Pousada Aurora da Mantiqueira", tipo:"Pousada",
     local:"A menos de 2 km do centro de Penedo",
-    desc:"Conforto, natureza e hospitalidade, com café da manhã caseiro e muita área verde. Valores para casal com café.",
+    desc:"Conforto, natureza e hospitalidade, com vista pra serra, café da manhã caseiro e muita área verde.",
     cat:"pousadas",
-    comodidades:["Piscina","Café da manhã caseiro","Área verde","Campinho","Estacionamento seguro","Ar-condicionado","Frigobar","TV"],
+    comodidades:["Piscina","Café da manhã caseiro","Suítes com varanda","Área verde","Campinho","Estacionamento seguro","Ar-condicionado","Frigobar","TV"],
     fotos:[
       {t:"Área externa",u:"https://photos.app.goo.gl/5L3UUfwF2GDg1ggg9"},
       {t:"Piscina",u:"https://photos.app.goo.gl/JrE88KdUcWy83SVX8"},
       {t:"Recepção e café",u:"https://photos.app.goo.gl/n3Dbcb2xAjzj4QLE6"}
     ],
     quartos:[{nome:"Suítes",sub:"Ar-condicionado, frigobar e TV · casal com café",fotos:"https://photos.app.goo.gl/7QZzXJcT2NznAD1p8"}],
+    capa:"fotos/aurora/r01.jpg",
+    galeria:Array.from({length:30},(_,i)=>`fotos/aurora/r${String(i+1).padStart(2,"0")}.jpg`),
     cena:2
   }
 ];
