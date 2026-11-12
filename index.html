@@ -236,6 +236,22 @@ footer a{text-decoration:underline}
 @keyframes sobe{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes aparece{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.card,.btn,.cat,.cover .bg,.thumbs img{transition:none}.card:hover,.btn:hover,.cat:hover{transform:none}.card:hover .cover .bg{transform:none}}
+
+/* ===== ajustes 2: barra sobre a foto, foto mais clara no celular ===== */
+header.top.top-over{position:absolute;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:5;background:transparent}
+header.top.top-over .brand b{color:#fff}
+header.top.top-over .brand small{color:rgba(255,255,255,.78)}
+header.top.top-over .brand .logo{box-shadow:0 0 0 2px rgba(255,255,255,.35)}
+.hero.hero-photo{min-height:min(100svh,920px)}
+.hero.hero-photo .wrap{padding-block:104px 56px}
+@media (max-width:759px){
+  .hero.hero-photo{align-items:flex-end}
+  .hero.hero-photo::before{background:linear-gradient(180deg,rgba(14,24,18,.45) 0%,rgba(14,24,18,.12) 22%,rgba(14,24,18,.35) 45%,rgba(14,24,18,.86) 78%)}
+  .hero.hero-photo .wrap{padding-block:96px 40px}
+  .hero.hero-photo .logo-big{display:none}
+  .hero.hero-photo h1{text-shadow:0 2px 18px rgba(0,0,0,.35)}
+}
+section#hospedagens{padding-top:44px}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -254,7 +270,7 @@ footer a{text-decoration:underline}
   </symbol>
 </svg>
 
-<header class="top">
+<header class="top top-over">
   <div class="wrap">
     <a class="brand" href="#inicio" aria-label="Penedo Reservas, início">
       <span class="logo" role="img" aria-label="Logo Jussara Coutinho Penedo Reserva"></span>
@@ -292,7 +308,16 @@ footer a{text-decoration:underline}
 </div>
 
 
-<section>
+<section id="hospedagens">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Parceiros Penedo Reservas</span><h2>Que tipo de hospedagem você procura?</h2></div>
+    <div class="cats" role="group" aria-label="Tipo de hospedagem" id="cats"></div>
+    <h3 class="cat-title" id="cat-title"></h3>
+    <div class="list" id="list"></div>
+  </div>
+</section>
+
+<section class="como">
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Como funciona</span><h2>Reservar comigo é simples</h2></div>
     <ol class="steps">
@@ -300,15 +325,6 @@ footer a{text-decoration:underline}
       <li><span class="n">2</span><div><b>Toque em "Consultar valores"</b><span>Abre meu WhatsApp já com o nome da hospedagem que você escolheu.</span></div></li>
       <li><span class="n">3</span><div><b>Eu confirmo e reservo</b><span>Me passa as datas e eu te mando valores e disponibilidade.</span></div></li>
     </ol>
-  </div>
-</section>
-
-<section id="hospedagens" style="padding-top:8px">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Parceiros Penedo Reservas</span><h2>Que tipo de hospedagem você procura?</h2></div>
-    <div class="cats" role="group" aria-label="Tipo de hospedagem" id="cats"></div>
-    <h3 class="cat-title" id="cat-title"></h3>
-    <div class="list" id="list"></div>
   </div>
 </section>
 
