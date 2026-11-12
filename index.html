@@ -191,6 +191,51 @@ footer a{text-decoration:underline}
 .fab svg{width:30px;height:30px;fill:currentColor}
 .empty{color:var(--muted);padding:20px 0}
 @media (prefers-reduced-motion:no-preference){.card{transition:transform .2s}.card:hover{transform:translateY(-2px)}}
+
+/* ===== melhorias de design (prévia) ===== */
+.hero.hero-photo{min-height:min(calc(100svh - 70px),860px);display:flex;align-items:center;background:#1c2a20 url("fotos/aurora/r01.jpg") center 45%/cover no-repeat;color:#fff;isolation:isolate}
+.hero.hero-photo::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(100deg,rgba(14,24,18,.86) 0%,rgba(14,24,18,.66) 45%,rgba(14,24,18,.18) 100%)}
+.hero.hero-photo .wrap{padding-block:56px;width:100%}
+.hero.hero-photo .ridge{display:none}
+.hero.hero-photo .eyebrow{color:#f2c79a}
+.hero.hero-photo h1{color:#fff;font-size:clamp(2.1rem,5.6vw,3.8rem)}
+.hero.hero-photo p.lead{color:rgba(255,255,255,.88)}
+.hero.hero-photo .trust{color:rgba(255,255,255,.8)}
+.hero.hero-photo .trust strong{color:#fff}
+.hero.hero-photo .btn-ghost{color:#fff;border-color:rgba(255,255,255,.8)}
+.hero.hero-photo .btn-ghost:hover{background:rgba(255,255,255,.12)}
+.hero.hero-photo .logo-big{width:clamp(120px,22vw,250px);box-shadow:0 0 0 6px rgba(255,255,255,.18),0 18px 50px rgba(0,0,0,.35)}
+@media (max-width:759px){.hero.hero-photo::before{background:linear-gradient(180deg,rgba(14,24,18,.55) 0%,rgba(14,24,18,.82) 60%)}.hero.hero-photo .logo-big{width:110px}}
+.cover{min-height:clamp(260px,62vw,420px)}
+@media (min-width:860px){.cover{min-height:440px}}
+.cover .bg{position:absolute;inset:0;background:#2a2a2a center/cover no-repeat;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.cover.photo{background:#2a2a2a;overflow:hidden}
+.cover.photo::before{z-index:1}
+.cover>*:not(.bg){z-index:2}
+.cover .mark{z-index:2}
+.card:hover .cover .bg{transform:scale(1.03)}
+.thumbs{gap:8px}
+.thumbs button{width:96px;height:72px;border-radius:10px}
+.thumbs img{transition:transform .4s}
+.thumbs button:hover img{transform:scale(1.06)}
+.btn{transition:transform .15s,filter .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.cat{transition:transform .2s,border-color .2s}
+.cat:hover{transform:translateY(-2px)}
+.card{transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.10)}
+@media (prefers-reduced-motion:no-preference){
+  .hero.hero-photo .wrap>div>*{animation:sobe .7s cubic-bezier(.2,.7,.2,1) both}
+  .hero.hero-photo .wrap>div>*:nth-child(2){animation-delay:.08s}
+  .hero.hero-photo .wrap>div>*:nth-child(3){animation-delay:.16s}
+  .hero.hero-photo .wrap>div>*:nth-child(4){animation-delay:.24s}
+  .hero.hero-photo .wrap>div>*:nth-child(5){animation-delay:.32s}
+  .hero.hero-photo .logo-big{animation:aparece .9s .2s both}
+}
+@keyframes sobe{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes aparece{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.card,.btn,.cat,.cover .bg,.thumbs img{transition:none}.card:hover,.btn:hover,.cat:hover{transform:none}.card:hover .cover .bg{transform:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -219,7 +264,7 @@ footer a{text-decoration:underline}
   </div>
 </header>
 
-<div class="hero" id="inicio">
+<div class="hero hero-photo" id="inicio">
   <div class="wrap hero-grid">
   <div>
     <div class="eyebrow">Penedo · Itatiaia · Serra da Mantiqueira</div>

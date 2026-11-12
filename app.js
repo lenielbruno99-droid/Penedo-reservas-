@@ -107,7 +107,7 @@ function render(){
   if(!itens.length){list.innerHTML=`<div class="empty-cat"><b>Em breve, ${c.nome.toLowerCase()} aqui no site.</b><p>Já tenho opções de ${c.nome.toLowerCase()} em Penedo. Me chama no WhatsApp que eu te mando as fotos e os valores.</p><a class="btn btn-wa" data-wa-cat="${c.nome.toLowerCase()}" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Quero ver ${c.nome.toLowerCase()}</a></div>`;atualizarLinks();return;}
   list.innerHTML=itens.map(p=>{
     return `<article class="card">
-      <div class="cover${p.capa?" photo":""}"${p.capa?` style="background-image:url('${esc(urlSegura(p.capa))}')"`:""}>
+      <div class="cover${p.capa?" photo":""}">${p.capa?`<span class="bg" aria-hidden="true" style="background-image:url('${esc(urlSegura(p.capa))}')"></span>`:""}
         ${p.capa?"":`<svg class="scene" viewBox="0 0 400 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${CENAS[p.cena%CENAS.length]}</svg>`}
         <span class="logo mark" aria-hidden="true"></span>
         <span class="tag">${esc(p.tipo)}</span>
