@@ -155,7 +155,8 @@ document.addEventListener("touchend",e=>{const d=document.getElementById("lb");i
 function atualizarLinks(){
   document.querySelectorAll("[data-wa='geral']").forEach(a=>a.href=waLink());
   document.querySelectorAll("[data-p]").forEach(a=>a.href=waLink(a.dataset.p,a.dataset.q));
-  document.querySelectorAll("[data-wa-cat]").forEach(a=>a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá, Jussara! Vi o site do Penedo Reservas e quero ver as opções de ${a.dataset.waCat} em Penedo. Pode me mandar?`)}`);
+  document.querySelectorAll("[data-wa-msg]").forEach(a=>a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá, Jussara! Vi o site do Penedo Reservas Turismo e ${a.dataset.waMsg}.`)}`);
+  document.querySelectorAll("[data-wa-cat]").forEach(a=>a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá, Jussara! Vi o site do Penedo Reservas Turismo e quero ver as opções de ${a.dataset.waCat} em Penedo. Pode me mandar?`)}`);
 }
 function desenharCats(){
   document.getElementById("cats").innerHTML=CATEGORIAS.map(c=>{
