@@ -73,6 +73,18 @@ const POUSADAS = [
     capa:"fotos/canto/k01.jpg",
     galeria:Array.from({length:23},(_,i)=>`fotos/canto/k${String(i+1).padStart(2,"0")}.jpg`),
     cena:0
+  },
+  {
+    id:"rosa", nome:"Casa Rosa", tipo:"Casa · até 8 pessoas",
+    local:"A 2 km do centrinho de Penedo, cerca de 5 minutos de carro",
+    desc:"Um cantinho especial em Penedo pra descansar, curtir bons momentos e se sentir em casa. Casa e área externa exclusivas pra você e seu grupo.",
+    cat:"casas",
+    comodidades:["2 quartos","2 banheiros","Até 8 pessoas","Piscina com cascata","Quintal com churrasqueira","Cozinha equipada","Ar-condicionado nos dois quartos","Wi-Fi e TV Smart","Roupa de cama para locação","Vaga para 2 carros"],
+    fotos:[],
+    quartos:[],
+    capa:"fotos/rosa/s01.jpg",
+    galeria:Array.from({length:24},(_,i)=>`fotos/rosa/s${String(i+1).padStart(2,"0")}.jpg`),
+    cena:0
   }
 ];
 const CATEGORIAS = [
