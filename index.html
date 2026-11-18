@@ -272,6 +272,14 @@ footer .logo.logo-foot{width:110px;height:62px}
 .serv b{font-family:var(--display);font-size:1.08rem}
 .serv small{color:var(--muted);font-size:.86rem}
 @media (prefers-reduced-motion:reduce){.serv{transition:none}.serv:hover{transform:none}}
+
+@media (max-width:759px){
+  .hero.hero-photo .logo-big.logo-full{display:block;order:-1;width:min(250px,66vw);aspect-ratio:1.8;justify-self:start;box-shadow:0 12px 34px rgba(0,0,0,.35);animation:none}
+  .hero.hero-photo .wrap{padding-block:88px 36px}
+  .hero.hero-photo .hero-grid{gap:18px}
+  .hero.hero-photo h1{font-size:clamp(1.9rem,8vw,2.3rem)}
+  .hero.hero-photo .trust{margin-top:16px}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
