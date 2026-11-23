@@ -47,7 +47,7 @@ const POUSADAS = [
     ],
     quartos:[{nome:"Suítes",sub:"Ar-condicionado, frigobar e TV · casal com café",fotos:"https://photos.app.goo.gl/7QZzXJcT2NznAD1p8"}],
     capa:"fotos/aurora/r01.jpg",
-    galeria:Array.from({length:30},(_,i)=>`fotos/aurora/r${String(i+1).padStart(2,"0")}.jpg`),
+    galeria:Array.from({length:28},(_,i)=>`fotos/aurora/r${String(i+1).padStart(2,"0")}.jpg`),
     cena:2
   },
   {
@@ -71,7 +71,7 @@ const POUSADAS = [
     fotos:[],
     quartos:[],
     capa:"fotos/canto/k01.jpg",
-    galeria:Array.from({length:23},(_,i)=>`fotos/canto/k${String(i+1).padStart(2,"0")}.jpg`),
+    galeria:Array.from({length:22},(_,i)=>`fotos/canto/k${String(i+1).padStart(2,"0")}.jpg`),
     cena:0
   },
   {
@@ -83,7 +83,7 @@ const POUSADAS = [
     fotos:[],
     quartos:[],
     capa:"fotos/rosa/s01.jpg",
-    galeria:Array.from({length:24},(_,i)=>`fotos/rosa/s${String(i+1).padStart(2,"0")}.jpg`),
+    galeria:Array.from({length:23},(_,i)=>`fotos/rosa/s${String(i+1).padStart(2,"0")}.jpg`),
     cena:0
   },
   {
@@ -95,7 +95,7 @@ const POUSADAS = [
     fotos:[],
     quartos:[],
     capa:"fotos/suites/u01.jpg",
-    galeria:Array.from({length:23},(_,i)=>`fotos/suites/u${String(i+1).padStart(2,"0")}.jpg`),
+    galeria:Array.from({length:22},(_,i)=>`fotos/suites/u${String(i+1).padStart(2,"0")}.jpg`),
     cena:2
   },
   {
@@ -107,7 +107,7 @@ const POUSADAS = [
     fotos:[],
     quartos:[],
     capa:"fotos/apto/p01.jpg",
-    galeria:Array.from({length:30},(_,i)=>`fotos/apto/p${String(i+1).padStart(2,"0")}.jpg`),
+    galeria:Array.from({length:25},(_,i)=>`fotos/apto/p${String(i+1).padStart(2,"0")}.jpg`),
     cena:0
   }
 ];
