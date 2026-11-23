@@ -107,7 +107,7 @@ const POUSADAS = [
     fotos:[],
     quartos:[],
     capa:"fotos/apto/p01.jpg",
-    galeria:Array.from({length:21},(_,i)=>`fotos/apto/p${String(i+1).padStart(2,"0")}.jpg`),
+    galeria:Array.from({length:30},(_,i)=>`fotos/apto/p${String(i+1).padStart(2,"0")}.jpg`),
     cena:0
   }
 ];
