@@ -85,6 +85,30 @@ const POUSADAS = [
     capa:"fotos/rosa/s01.jpg",
     galeria:Array.from({length:24},(_,i)=>`fotos/rosa/s${String(i+1).padStart(2,"0")}.jpg`),
     cena:0
+  },
+  {
+    id:"suites", nome:"Suítes com Piscina perto do Centrinho", tipo:"Pousada · 7 suítes",
+    local:"A aproximadamente 1,5 km do centro de Penedo",
+    desc:"Seu descanso em Penedo começa aqui: suítes aconchegantes e bem cuidadas, com piscina, muito verde e vista pra serra, pertinho do centrinho.",
+    cat:"pousadas",
+    comodidades:["7 suítes","Área de piscina","Roupa de cama, toalhas e cobertas inclusas","Um mimo pela manhã","Vista para a serra","Wi-Fi","Ar-condicionado","Estacionamento"],
+    fotos:[],
+    quartos:[],
+    capa:"fotos/suites/u01.jpg",
+    galeria:Array.from({length:23},(_,i)=>`fotos/suites/u${String(i+1).padStart(2,"0")}.jpg`),
+    cena:2
+  },
+  {
+    id:"aptos", nome:"Apartamentos no Centro de Penedo", tipo:"Apartamento · até 6 pessoas",
+    local:"Em frente à Igreja Católica, a 200 m do centro e a 150 m da Fábrica de Chocolate",
+    desc:"Dois apartamentos com localização privilegiada, ao lado de mercados, padarias, farmácias e restaurantes. Dá pra fazer tudo a pé.",
+    cat:"apartamentos",
+    comodidades:["2 apartamentos","Até 6 pessoas","Sala, 2 quartos e banheiro","Cozinha equipada","Piscina de uso comum","Roupa de cama e toalhas inclusas"],
+    fotos:[],
+    quartos:[],
+    capa:"fotos/apto/p01.jpg",
+    galeria:Array.from({length:21},(_,i)=>`fotos/apto/p${String(i+1).padStart(2,"0")}.jpg`),
+    cena:0
   }
 ];
 const CATEGORIAS = [
