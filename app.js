@@ -63,6 +63,18 @@ const POUSADAS = [
     cena:0
   },
   {
+    id:"martinelli", nome:"Casa Martinelli", tipo:"Casa · até 8 pessoas",
+    local:"Penedo-RJ, cercada de verde e sossego",
+    desc:"Casa térrea e ampla, com ambientes integrados, arejados e muito bem iluminados. Tem um gramado enorme e é ideal para quem quer descansar com conforto e acessibilidade.",
+    cat:"casas",
+    comodidades:["3 quartos","Até 8 pessoas","2 banheiros e lavabo","Casa térrea","Amplo gramado","Cozinha","Wi-Fi e TV","Estacionamento grátis"],
+    fotos:[],
+    quartos:[],
+    capa:"fotos/martinelli/m01.jpg",
+    galeria:Array.from({length:25},(_,i)=>`fotos/martinelli/m${String(i+1).padStart(2,"0")}.jpg`),
+    cena:0
+  },
+  {
     id:"canto", nome:"Canto da Montanha", tipo:"Casa · até 8 pessoas",
     local:"A 2 km do centro, uns 10 minutos a pé da Praça Finlândia",
     desc:"Chalé encantador com piscina e churrasqueira privativas, pra aproveitar Penedo com a família e os amigos.",
