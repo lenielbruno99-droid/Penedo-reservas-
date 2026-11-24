@@ -97,31 +97,8 @@ const POUSADAS = [
     capa:"fotos/suites/u01.jpg",
     galeria:Array.from({length:22},(_,i)=>`fotos/suites/u${String(i+1).padStart(2,"0")}.jpg`),
     cena:2
-  },
-  {
-    id:"apto01", nome:"Apartamento 01 · Centro de Penedo", tipo:"Apartamento · até 6 pessoas",
-    local:"Em frente à Igreja Católica, a 200 m do centro e a 150 m da Fábrica de Chocolate",
-    cat:"apartamentos",
-    comodidades:["Até 6 pessoas","Sala, 2 quartos e banheiro","Cozinha equipada","Piscina de uso comum","Roupa de cama e toalhas inclusas","Tudo a pé no centro"],
-    fotos:[],
-    quartos:[],
-    desc:"Apartamento em dois andares, com sala ampla e escada para os quartos. Localização privilegiada, ao lado de mercados, padarias, farmácias e restaurantes.",
-    capa:"fotos/apto/p17.jpg",
-    galeria:["fotos/apto/p17.jpg","fotos/apto/p19.jpg","fotos/apto/p18.jpg","fotos/apto/p16.jpg","fotos/apto/p05.jpg","fotos/apto/p20.jpg","fotos/apto/p22.jpg","fotos/apto/p23.jpg","fotos/apto/p24.jpg","fotos/apto/p01.jpg","fotos/apto/p02.jpg","fotos/apto/p03.jpg","fotos/apto/p04.jpg","fotos/apto/p10.jpg","fotos/apto/p11.jpg","fotos/apto/p12.jpg","fotos/apto/p13.jpg","fotos/apto/p14.jpg","fotos/apto/p15.jpg"],
-    cena:0
-  },
-  {
-    id:"apto05", nome:"Apartamento 05 · Centro de Penedo", tipo:"Apartamento · até 6 pessoas",
-    local:"Em frente à Igreja Católica, a 200 m do centro e a 150 m da Fábrica de Chocolate",
-    cat:"apartamentos",
-    comodidades:["Até 6 pessoas","Sala, 2 quartos e banheiro","Cozinha equipada","Piscina de uso comum","Roupa de cama e toalhas inclusas","Tudo a pé no centro"],
-    fotos:[],
-    quartos:[],
-    desc:"Quartos com ventilador de teto e cozinha completa, no mesmo condomínio com piscina. Ao lado de mercados, padarias, farmácias e restaurantes.",
-    capa:"fotos/apto/p06.jpg",
-    galeria:["fotos/apto/p06.jpg","fotos/apto/p07.jpg","fotos/apto/p08.jpg","fotos/apto/p09.jpg","fotos/apto/p21.jpg","fotos/apto/p25.jpg","fotos/apto/p01.jpg","fotos/apto/p02.jpg","fotos/apto/p03.jpg","fotos/apto/p04.jpg","fotos/apto/p10.jpg","fotos/apto/p11.jpg","fotos/apto/p12.jpg","fotos/apto/p13.jpg","fotos/apto/p14.jpg","fotos/apto/p15.jpg"],
-    cena:0
   }
+
 ];
 const CATEGORIAS = [
   {id:"pousadas",nome:"Pousadas",um:"pousada",icone:'<path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6M9 11h.01M15 11h.01"/>'},
