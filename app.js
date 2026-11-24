@@ -3,7 +3,7 @@
 const WHATSAPP = "5524992132158";
 const POUSADAS = [
   {
-    id:"viking", nome:"Pousada Viking", tipo:"Pousada",
+    id:"viking", nome:"Pousada no Centro", tipo:"Pousada",
     local:"Perto da Casa do Chocolate, a poucos minutos do centrinho de Penedo",
     desc:"Conforto, lazer e tranquilidade para aproveitar Penedo, com piscina ao ar livre e café da manhã.",
     cat:"pousadas",
@@ -35,7 +35,7 @@ const POUSADAS = [
     cena:1
   },
   {
-    id:"aurora", nome:"Pousada Aurora da Mantiqueira", tipo:"Pousada",
+    id:"aurora", nome:"Pousada com Linda Vista", tipo:"Pousada",
     local:"A menos de 2 km do centro de Penedo",
     desc:"Conforto, natureza e hospitalidade, com vista pra serra, café da manhã caseiro e muita área verde.",
     cat:"pousadas",
