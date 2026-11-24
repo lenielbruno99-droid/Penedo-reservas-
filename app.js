@@ -109,6 +109,18 @@ const POUSADAS = [
     capa:"fotos/apto01/a01.jpg",
     galeria:Array.from({length:10},(_,i)=>`fotos/apto01/a${String(i+1).padStart(2,"0")}.jpg`),
     cena:0
+  },
+  {
+    id:"apto05", nome:"Apartamento 05 · Centro de Penedo", tipo:"Apartamento · até 6 pessoas",
+    local:"Em frente à Igreja Católica, a 200 m do centro e a 150 m da Fábrica de Chocolate",
+    desc:"Apartamento em dois andares, com sala ampla, cozinha completa e quartos com ventilador de teto. Tem varanda com vista para a piscina e quintal com área coberta. Fica ao lado de mercados, padarias, farmácias e restaurantes.",
+    cat:"apartamentos",
+    comodidades:["Até 6 pessoas","Sala e cozinha completa","Quartos com ventilador de teto","Banheiro com box","Varanda com vista da piscina","Quintal com área coberta","Roupa de cama e toalhas inclusas"],
+    fotos:[],
+    quartos:[],
+    capa:"fotos/apto05/b01.jpg",
+    galeria:Array.from({length:16},(_,i)=>`fotos/apto05/b${String(i+1).padStart(2,"0")}.jpg`),
+    cena:0
   }
 ];
 const CATEGORIAS = [
