@@ -3,7 +3,7 @@
 const WHATSAPP = "5524992132158";
 const POUSADAS = [
   {
-    id:"viking", nome:"Pousada no Centro", tipo:"Pousada",
+    id:"pousada-centro", nome:"Pousada no Centro", tipo:"Pousada",
     local:"Perto da Casa do Chocolate, a poucos minutos do centrinho de Penedo",
     desc:"Conforto, lazer e tranquilidade para aproveitar Penedo, com piscina ao ar livre e café da manhã.",
     cat:"pousadas",
@@ -15,7 +15,7 @@ const POUSADAS = [
     cena:0
   },
   {
-    id:"alto", nome:"Pousada no Alto Penedo", tipo:"Pousada",
+    id:"pousada-alto-penedo", nome:"Pousada no Alto Penedo", tipo:"Pousada",
     local:"Estrada da Fazendinha, bem pertinho da Cachoeira de Deus",
     desc:"A pousada no sossego que você espera de Penedo, bem pertinho da Cachoeira de Deus. Todas as acomodações com café da manhã.",
     cat:"pousadas",
@@ -35,7 +35,7 @@ const POUSADAS = [
     cena:1
   },
   {
-    id:"aurora", nome:"Pousada com Linda Vista", tipo:"Pousada",
+    id:"pousada-linda-vista", nome:"Pousada com Linda Vista", tipo:"Pousada",
     local:"A menos de 2 km do centro de Penedo",
     desc:"Conforto, natureza e hospitalidade, com vista pra serra, café da manhã caseiro e muita área verde.",
     cat:"pousadas",
@@ -51,7 +51,7 @@ const POUSADAS = [
     cena:2
   },
   {
-    id:"casa16", nome:"Super Casa na Natureza", tipo:"Casa · até 16 pessoas",
+    id:"super-casa", nome:"Super Casa na Natureza", tipo:"Casa · até 16 pessoas",
     local:"Penedo-RJ, um refúgio cercado de verde",
     desc:"Perfeita para quem busca conforto, paz e contato com a natureza. Ideal para famílias e grupos grandes.",
     cat:"casas",
@@ -63,7 +63,7 @@ const POUSADAS = [
     cena:0
   },
   {
-    id:"bosque", nome:"Pousada com Bosque e Área Kids", tipo:"Pousada",
+    id:"pousada-bosque", nome:"Pousada com Bosque e Área Kids", tipo:"Pousada",
     local:"Ao lado do Shopping do Esquilo e do Posto BR",
     desc:"Quartos confortáveis e café da manhã com opções caseiras. Tem piscina, área kids, bosque e redário.",
     cat:"pousadas",
@@ -75,7 +75,7 @@ const POUSADAS = [
     cena:0
   },
   {
-    id:"martinelli", nome:"Casa Martinelli", tipo:"Casa · até 8 pessoas",
+    id:"casa-martinelli", nome:"Casa Martinelli", tipo:"Casa · até 8 pessoas",
     local:"Penedo-RJ, cercada de verde e sossego",
     desc:"Casa térrea e ampla, com ambientes integrados, arejados e muito bem iluminados. Tem um gramado enorme e é ideal para quem quer descansar com conforto e acessibilidade.",
     cat:"casas",
@@ -87,7 +87,7 @@ const POUSADAS = [
     cena:0
   },
   {
-    id:"canto", nome:"Canto da Montanha", tipo:"Casa · até 8 pessoas",
+    id:"canto-da-montanha", nome:"Canto da Montanha", tipo:"Casa · até 8 pessoas",
     local:"A 2 km do centro, uns 10 minutos a pé da Praça Finlândia",
     desc:"Chalé encantador com piscina e churrasqueira privativas, pra aproveitar Penedo com a família e os amigos.",
     cat:"casas",
@@ -99,7 +99,7 @@ const POUSADAS = [
     cena:0
   },
   {
-    id:"rosa", nome:"Casa Rosa", tipo:"Casa · até 8 pessoas",
+    id:"casa-rosa", nome:"Casa Rosa", tipo:"Casa · até 8 pessoas",
     local:"A 2 km do centrinho de Penedo, cerca de 5 minutos de carro",
     desc:"Um cantinho especial em Penedo pra descansar, curtir bons momentos e se sentir em casa. Casa e área externa exclusivas pra você e seu grupo.",
     cat:"casas",
@@ -111,7 +111,7 @@ const POUSADAS = [
     cena:0
   },
   {
-    id:"suites", nome:"Suítes com Piscina perto do Centrinho", tipo:"Pousada · 7 suítes",
+    id:"suites-com-piscina", nome:"Suítes com Piscina perto do Centrinho", tipo:"Pousada · 7 suítes",
     local:"A aproximadamente 1,5 km do centro de Penedo",
     desc:"Seu descanso em Penedo começa aqui: suítes aconchegantes e bem cuidadas, com piscina, muito verde e vista pra serra, pertinho do centrinho.",
     cat:"pousadas",
@@ -123,7 +123,7 @@ const POUSADAS = [
     cena:2
   },
   {
-    id:"apto01", nome:"Apartamento 01 · Centro de Penedo", tipo:"Apartamento · até 6 pessoas",
+    id:"apartamento-01", nome:"Apartamento 01 · Centro de Penedo", tipo:"Apartamento · até 6 pessoas",
     local:"Em frente à Igreja Católica, a 200 m do centro e a 150 m da Fábrica de Chocolate",
     desc:"Apartamento em dois andares, com sala ampla, cozinha completa e varanda com vista para a igreja. Fica num condomínio com piscina, ao lado de mercados, padarias, farmácias e restaurantes. Dá pra fazer tudo a pé.",
     cat:"apartamentos",
@@ -135,7 +135,7 @@ const POUSADAS = [
     cena:0
   },
   {
-    id:"apto05", nome:"Apartamento 05 · Centro de Penedo", tipo:"Apartamento · até 6 pessoas",
+    id:"apartamento-05", nome:"Apartamento 05 · Centro de Penedo", tipo:"Apartamento · até 6 pessoas",
     local:"Em frente à Igreja Católica, a 200 m do centro e a 150 m da Fábrica de Chocolate",
     desc:"Apartamento em dois andares, com sala ampla, cozinha completa e quartos com ventilador de teto. Tem varanda com vista para a piscina e quintal com área coberta. Fica ao lado de mercados, padarias, farmácias e restaurantes.",
     cat:"apartamentos",
@@ -163,7 +163,10 @@ function waLink(pousada, quarto){
   return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 }
 const esc = s => String(s).replace(/[&<>"'`]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;","`":"&#96;"}[c]));
-const urlSegura = u => { const t=String(u||""); return /^(https:\/\/|fotos\/)[^\s"'<>()\\]*$/.test(t) ? t : ""; };
+const urlSegura = u => { const t=String(u||""); if(!/^(https:\/\/|fotos\/)[^\s"'<>()\\]*$/.test(t)) return ""; return t.startsWith("fotos/") ? "/"+t : t; };
+const SITE = "https://www.penedoreservasturismo.com.br";
+let SOLO = (document.body.dataset.solo||"");
+if(!POUSADAS.some(p=>p.id===SOLO)) SOLO="";
 const CENAS = [
   `<path d="M0 220 V140 L70 95 L130 130 L210 70 L300 125 L400 85 L400 220 Z" fill="var(--m1)"/><path d="M0 220 V170 L90 140 L180 165 L260 130 L400 160 V220 Z" fill="var(--m2)"/><rect x="250" y="150" width="70" height="38" fill="#c9a27a"/><path d="M244 152 L285 122 L326 152 Z" fill="#7a4a2a"/><rect x="278" y="166" width="14" height="22" fill="#3b2a1e"/><path d="M0 220 V195 L400 188 V220 Z" fill="var(--m3)"/>`,
   `<path d="M0 220 V120 L90 60 L160 105 L240 40 L330 100 L400 70 V220 Z" fill="var(--m1)"/><path d="M0 220 V160 L120 125 L220 150 L320 118 L400 140 V220 Z" fill="var(--m2)"/><g fill="var(--m3)"><rect x="58" y="120" width="3" height="60"/><path d="M59.5 95 l-14 11 h28Z M59.5 105 l-17 12 h34Z M59.5 116 l-20 13 h40Z"/><rect x="338" y="118" width="3" height="60"/><path d="M339.5 92 l-14 11 h28Z M339.5 102 l-17 12 h34Z M339.5 113 l-20 13 h40Z"/></g><path d="M0 220 V190 L400 182 V220 Z" fill="var(--m3)"/>`,
@@ -173,8 +176,8 @@ let cat="pousadas";
 function render(){
   const list=document.getElementById("list");
   const c=CATEGORIAS.find(x=>x.id===cat);
-  const itens=POUSADAS.filter(p=>p.cat===cat);
-  document.getElementById("cat-title").textContent=`${c.nome} em Penedo`;
+  const itens=SOLO?POUSADAS.filter(p=>p.id===SOLO):POUSADAS.filter(p=>p.cat===cat);
+  document.getElementById("cat-title").textContent=SOLO?itens[0].nome:`${c.nome} em Penedo`;
   document.querySelectorAll(".cat").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===cat));
   if(!itens.length){list.innerHTML=`<div class="empty-cat"><b>Em breve, ${c.nome.toLowerCase()} aqui no site.</b><p>Já tenho opções de ${c.nome.toLowerCase()} em Penedo. Me chama no WhatsApp que eu te mando as fotos e os valores.</p><a class="btn btn-wa" data-wa-cat="${c.nome.toLowerCase()}" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Quero ver ${c.nome.toLowerCase()}</a></div>`;atualizarLinks();return;}
   list.innerHTML=itens.map(p=>{
@@ -192,15 +195,17 @@ function render(){
         <p class="desc">${esc(p.desc)}</p>
         ${p.galeria?`<div class="thumbs">${p.galeria.map((u,i)=>`<button type="button" data-g="${esc(p.id)}" data-i="${i}" aria-label="Foto ${i+1}"><img src="${esc(urlSegura(u))}" alt="" loading="lazy"></button>`).join("")}</div>`:""}
         <ul class="amen">${p.comodidades.map(c=>`<li>${esc(c)}</li>`).join("")}</ul>
-        <a class="btn btn-wa" data-p="${esc(p.nome)}" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Consultar valores e disponibilidade</a>
+        <div class="actions"><a class="btn btn-wa" data-p="${esc(p.nome)}" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Consultar valores e disponibilidade</a><button class="share" type="button" data-share="${esc(p.id)}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Compartilhar</span></button></div>
       </div>
     </article>`;
-  }).join("");
+  }).join("") + (SOLO?`<div class="solo-more"><a href="/#${esc(c.id)}">Ver todas as ${esc(c.nome.toLowerCase())}</a></div>`:"");
   atualizarLinks();
 }
 let lbFotos=[],lbI=0;
 function lbShow(){const d=document.getElementById("lb");d.querySelector("img").src=urlSegura(lbFotos[lbI]);d.querySelector(".ct").textContent=`${lbI+1} de ${lbFotos.length}`;}
 document.addEventListener("click",e=>{
+  const sh=e.target.closest("[data-share]");
+  if(sh){compartilhar(sh);return;}
   const b=e.target.closest("[data-g]");
   if(b){const p=POUSADAS.find(x=>x.id===b.dataset.g);if(!p||!p.galeria)return;lbFotos=p.galeria;lbI=+b.dataset.i;lbShow();document.getElementById("lb").showModal();return;}
   const d=document.getElementById("lb"); if(!d.open) return;
@@ -218,6 +223,19 @@ function atualizarLinks(){
   document.querySelectorAll("[data-wa-msg]").forEach(a=>a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá, Jussara! Vi o site do Penedo Reservas Turismo e ${a.dataset.waMsg}.`)}`);
   document.querySelectorAll("[data-wa-cat]").forEach(a=>a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá, Jussara! Vi o site do Penedo Reservas Turismo e quero ver as opções de ${a.dataset.waCat} em Penedo. Pode me mandar?`)}`);
 }
+async function compartilhar(btn){
+  const p=POUSADAS.find(x=>x.id===btn.dataset.share); if(!p) return;
+  const url=`${SITE}/h/${p.id}`;
+  const lbl=btn.querySelector("span");
+  try{
+    if(navigator.share){await navigator.share({title:p.nome,text:`${p.nome} em Penedo`,url});return;}
+    await navigator.clipboard.writeText(url);
+    btn.classList.add("ok");lbl.textContent="Link copiado!";
+    setTimeout(()=>{btn.classList.remove("ok");lbl.textContent="Compartilhar";},2200);
+  }catch(_){
+    if(!navigator.share){window.prompt("Copie o link:",url);}
+  }
+}
 function desenharCats(){
   document.getElementById("cats").innerHTML=CATEGORIAS.map(c=>{
     const n=POUSADAS.filter(p=>p.cat===c.id).length;
@@ -227,10 +245,13 @@ function desenharCats(){
 document.getElementById("cats").addEventListener("click",e=>{
   const b=e.target.closest(".cat"); if(!b) return;
   cat=b.dataset.c;
-  try{history.replaceState(null,"","#"+cat);}catch(_){}
+  if(SOLO){SOLO="";try{history.replaceState(null,"","/#"+cat);}catch(_){}}
+  else{try{history.replaceState(null,"","#"+cat);}catch(_){}}
   render();
 });
 const h=(location.hash||"").slice(1);
-if(CATEGORIAS.some(c=>c.id===h)) cat=h;
+if(SOLO) cat=POUSADAS.find(p=>p.id===SOLO).cat;
+else if(CATEGORIAS.some(c=>c.id===h)) cat=h;
 desenharCats();
 render();
+if(SOLO){const sec=document.getElementById("cat-title");if(sec)requestAnimationFrame(()=>sec.scrollIntoView());}
