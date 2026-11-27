@@ -63,6 +63,18 @@ const POUSADAS = [
     cena:0
   },
   {
+    id:"sitio-cachoeira", nome:"Sítio pertinho da Cachoeira", tipo:"Sítio · 4 suítes",
+    local:"A poucos metros da primeira cachoeira de Penedo",
+    desc:"Suítes privativas com banheiro e ventilador, piscina, sauna, cozinha gourmet e sala com TV e lareira. Tudo cercado de verde, pertinho da cachoeira.",
+    cat:"sitios",
+    comodidades:["4 suítes privativas","Piscina","Sauna","2 churrasqueiras","Cozinha gourmet equipada","Sala com TV e lareira","Varanda com redes","Roupa de cama e cobertores"],
+    fotos:[],
+    quartos:[],
+    capa:"fotos/sol/s01.jpg",
+    galeria:Array.from({length:41},(_,i)=>`fotos/sol/s${String(i+1).padStart(2,"0")}.jpg`),
+    cena:0
+  },
+  {
     id:"pousada-bosque", nome:"Pousada com Bosque e Área Kids", tipo:"Pousada",
     local:"Ao lado do Shopping do Esquilo e do Posto BR",
     desc:"Quartos confortáveis e café da manhã com opções caseiras. Tem piscina, área kids, bosque e redário.",
