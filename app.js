@@ -63,9 +63,9 @@ const POUSADAS = [
     cena:0
   },
   {
-    id:"sitio-cachoeira", nome:"Sítio pertinho da Cachoeira", tipo:"Sítio · 4 suítes",
+    id:"sitio-cachoeira", nome:"Sítio pertinho da Cachoeira", tipo:"Sítio · 4 suítes", destaque:true, lado:[1,11],
     local:"A poucos metros da primeira cachoeira de Penedo",
-    desc:"Suítes privativas com banheiro e ventilador, piscina, sauna, cozinha gourmet e sala com TV e lareira. Tudo cercado de verde, pertinho da cachoeira.",
+    desc:"Um refúgio no meio do verde, a poucos passos da primeira cachoeira de Penedo. Dias de piscina, sauna e churrasco, noites em volta da lareira e redes na varanda para descansar ouvindo a natureza. São 4 suítes privativas e uma cozinha gourmet completa para reunir a família e os amigos.",
     cat:"sitios",
     comodidades:["4 suítes privativas","Piscina","Sauna","2 churrasqueiras","Cozinha gourmet equipada","Sala com TV e lareira","Varanda com redes","Roupa de cama e cobertores"],
     fotos:[],
@@ -77,9 +77,9 @@ const POUSADAS = [
   {
     id:"pousada-bosque", nome:"Pousada com Bosque e Área Kids", tipo:"Pousada",
     local:"Ao lado do Shopping do Esquilo e do Posto BR",
-    desc:"Quartos confortáveis e café da manhã com opções caseiras. Tem piscina, área kids, bosque e redário.",
+    desc:"Quartos confortáveis e café da manhã com opções caseiras. Tem piscina, sauna, área kids, bosque e redário.",
     cat:"pousadas",
-    comodidades:["Piscina","Café da manhã caseiro","Área kids","Bosque","Redário","Ar-condicionado","Ventilador de teto","Camas box","TV via satélite"],
+    comodidades:["Piscina","Sauna","Café da manhã caseiro","Área kids","Bosque","Redário","Ar-condicionado","Ventilador de teto","Camas box","TV via satélite"],
     fotos:[],
     quartos:[],
     capa:"fotos/bosque/b01.jpg",
@@ -188,13 +188,14 @@ let cat="pousadas";
 function render(){
   const list=document.getElementById("list");
   const c=CATEGORIAS.find(x=>x.id===cat);
-  const itens=SOLO?POUSADAS.filter(p=>p.id===SOLO):POUSADAS.filter(p=>p.cat===cat);
+  const itens=SOLO?POUSADAS.filter(p=>p.id===SOLO):POUSADAS.filter(p=>p.cat===cat).sort((a,b)=>(b.destaque?1:0)-(a.destaque?1:0));
   document.getElementById("cat-title").textContent=SOLO?itens[0].nome:`${c.nome} em Penedo`;
   document.querySelectorAll(".cat").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===cat));
   if(!itens.length){list.innerHTML=`<div class="empty-cat"><b>Em breve, ${c.nome.toLowerCase()} aqui no site.</b><p>Já tenho opções de ${c.nome.toLowerCase()} em Penedo. Me chama no WhatsApp que eu te mando as fotos e os valores.</p><a class="btn btn-wa" data-wa-cat="${c.nome.toLowerCase()}" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Quero ver ${c.nome.toLowerCase()}</a></div>`;atualizarLinks();return;}
   list.innerHTML=itens.map(p=>{
-    return `<article class="card">
-      <div class="cover${p.capa?" photo":""}">${p.capa?`<span class="bg" aria-hidden="true" style="background-image:url('${esc(urlSegura(p.capa))}')"></span>`:""}
+    const lx=(p.lado||[1,2]);const lado=(p.destaque&&p.galeria&&p.galeria.length>2)?`<span class="side" aria-hidden="true"><i style="background-image:url('${esc(urlSegura(p.galeria[lx[0]]))}')"></i><i style="background-image:url('${esc(urlSegura(p.galeria[lx[1]]))}')"></i></span>`:"";
+    return `<article class="card${p.destaque?" destaque":""}">
+      <div class="cover${p.capa?" photo":""}">${p.capa?`<span class="bg" aria-hidden="true" style="background-image:url('${esc(urlSegura(p.capa))}')"></span>`:""}${lado}${p.destaque?`<span class="selo">★ Destaque</span>`:""}
         ${p.capa?"":`<svg class="scene" viewBox="0 0 400 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${CENAS[p.cena%CENAS.length]}</svg>`}
         <span class="logo mark" aria-hidden="true"></span>
         <span class="tag">${esc(p.tipo)}</span>
@@ -248,6 +249,12 @@ async function compartilhar(btn){
     if(!navigator.share){window.prompt("Copie o link:",url);}
   }
 }
+function desenharDestaque(){
+  const box=document.getElementById("destaque"); if(!box) return;
+  const p=POUSADAS.find(x=>x.destaque);
+  if(!p||SOLO){box.innerHTML="";return;}
+  box.innerHTML=`<a class="dest-box" href="/h/${esc(p.id)}"><span class="bg" aria-hidden="true" style="background-image:url('${esc(urlSegura(p.capa))}')"></span><div class="in"><span class="selo">★ Destaque</span><h3>${esc(p.nome)}</h3><p>${esc(p.local)} · ${esc(p.comodidades.slice(0,4).join(" · "))}</p><span class="go">Ver fotos e detalhes →</span></div></a>`;
+}
 function desenharCats(){
   document.getElementById("cats").innerHTML=CATEGORIAS.map(c=>{
     const n=POUSADAS.filter(p=>p.cat===c.id).length;
@@ -257,13 +264,14 @@ function desenharCats(){
 document.getElementById("cats").addEventListener("click",e=>{
   const b=e.target.closest(".cat"); if(!b) return;
   cat=b.dataset.c;
-  if(SOLO){SOLO="";try{history.replaceState(null,"","/#"+cat);}catch(_){}}
+  if(SOLO){SOLO="";desenharDestaque();try{history.replaceState(null,"","/#"+cat);}catch(_){}}
   else{try{history.replaceState(null,"","#"+cat);}catch(_){}}
   render();
 });
 const h=(location.hash||"").slice(1);
 if(SOLO) cat=POUSADAS.find(p=>p.id===SOLO).cat;
 else if(CATEGORIAS.some(c=>c.id===h)) cat=h;
+desenharDestaque();
 desenharCats();
 render();
 if(SOLO){const sec=document.getElementById("cat-title");if(sec)requestAnimationFrame(()=>sec.scrollIntoView());}
