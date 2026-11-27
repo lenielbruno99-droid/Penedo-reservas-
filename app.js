@@ -51,10 +51,10 @@ const POUSADAS = [
     cena:2
   },
   {
-    id:"super-casa", nome:"Super Casa na Natureza", tipo:"Casa · até 16 pessoas",
+    id:"super-casa", nome:"Super Casa na Natureza", tipo:"Sítio · até 16 pessoas",
     local:"Penedo-RJ, um refúgio cercado de verde",
     desc:"Perfeita para quem busca conforto, paz e contato com a natureza. Ideal para famílias e grupos grandes.",
-    cat:"casas",
+    cat:"sitios",
     comodidades:["6 quartos","Até 16 pessoas","Piscina","Espaço para fogueira","Sala de jogos com sinuca e totó","Churrasqueira","Fogão a lenha","Varandas"],
     fotos:[],
     quartos:[],
@@ -198,7 +198,7 @@ function render(){
         <div class="actions"><a class="btn btn-wa" data-p="${esc(p.nome)}" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Consultar valores e disponibilidade</a><button class="share" type="button" data-share="${esc(p.id)}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Compartilhar</span></button></div>
       </div>
     </article>`;
-  }).join("") + (SOLO?`<div class="solo-more"><a href="/#${esc(c.id)}">Ver todas as ${esc(c.nome.toLowerCase())}</a></div>`:"");
+  }).join("") + (SOLO?`<div class="solo-more"><a href="/#${esc(c.id)}">Ver ${["sitios","apartamentos"].includes(c.id)?"todos os":"todas as"} ${esc(c.nome.toLowerCase())}</a></div>`:"");
   atualizarLinks();
 }
 let lbFotos=[],lbI=0;
