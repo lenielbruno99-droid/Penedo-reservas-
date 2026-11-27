@@ -63,7 +63,7 @@ const POUSADAS = [
     cena:0
   },
   {
-    id:"sitio-cachoeira", nome:"Sítio pertinho da Cachoeira", tipo:"Sítio · 4 suítes", destaque:true, lado:[1,11],
+    id:"sitio-cachoeira", nome:"Sítio pertinho da Cachoeira", tipo:"Sítio · 4 suítes", destaque:true, lado:[1,11], chamada:"Piscina, sauna e lareira a poucos passos da primeira cachoeira de Penedo. 4 suítes privativas e cozinha gourmet completa.",
     local:"A poucos metros da primeira cachoeira de Penedo",
     desc:"Um refúgio no meio do verde, a poucos passos da primeira cachoeira de Penedo. Dias de piscina, sauna e churrasco, noites em volta da lareira e redes na varanda para descansar ouvindo a natureza. São 4 suítes privativas e uma cozinha gourmet completa para reunir a família e os amigos.",
     cat:"sitios",
@@ -195,7 +195,7 @@ function render(){
   list.innerHTML=itens.map(p=>{
     const lx=(p.lado||[1,2]);const lado=(p.destaque&&p.galeria&&p.galeria.length>2)?`<span class="side" aria-hidden="true"><i style="background-image:url('${esc(urlSegura(p.galeria[lx[0]]))}')"></i><i style="background-image:url('${esc(urlSegura(p.galeria[lx[1]]))}')"></i></span>`:"";
     return `<article class="card${p.destaque?" destaque":""}">
-      <div class="cover${p.capa?" photo":""}">${p.capa?`<span class="bg" aria-hidden="true" style="background-image:url('${esc(urlSegura(p.capa))}')"></span>`:""}${lado}${p.destaque?`<span class="selo">★ Destaque</span>`:""}
+      <div class="cover${p.capa?" photo":""}">${p.capa?`<span class="bg" aria-hidden="true" style="background-image:url('${esc(urlSegura(p.capa))}')"></span>`:""}${lado}${p.destaque?`<span class="selo">★ Destaque do mês</span>`:""}
         ${p.capa?"":`<svg class="scene" viewBox="0 0 400 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${CENAS[p.cena%CENAS.length]}</svg>`}
         <span class="logo mark" aria-hidden="true"></span>
         <span class="tag">${esc(p.tipo)}</span>
@@ -208,7 +208,7 @@ function render(){
         <p class="desc">${esc(p.desc)}</p>
         ${p.galeria?`<div class="thumbs">${p.galeria.map((u,i)=>`<button type="button" data-g="${esc(p.id)}" data-i="${i}" aria-label="Foto ${i+1}"><img src="${esc(urlSegura(u))}" alt="" loading="lazy"></button>`).join("")}</div>`:""}
         <ul class="amen">${p.comodidades.map(c=>`<li>${esc(c)}</li>`).join("")}</ul>
-        <div class="actions"><a class="btn btn-wa" data-p="${esc(p.nome)}" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Consultar valores e disponibilidade</a><button class="share" type="button" data-share="${esc(p.id)}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Compartilhar</span></button></div>
+        <div class="actions"><a class="btn btn-wa" data-p="${esc(p.nome)}"${p.destaque?' data-dest="1"':""} href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Consultar valores e disponibilidade</a><button class="share" type="button" data-share="${esc(p.id)}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Compartilhar</span></button></div>
       </div>
     </article>`;
   }).join("") + (SOLO?`<div class="solo-more"><a href="/#${esc(c.id)}">Ver ${["sitios","apartamentos"].includes(c.id)?"todos os":"todas as"} ${esc(c.nome.toLowerCase())}</a></div>`:"");
@@ -232,7 +232,7 @@ document.addEventListener("touchstart",e=>{if(document.getElementById("lb").open
 document.addEventListener("touchend",e=>{const d=document.getElementById("lb");if(!d.open||tx===null)return;const dx=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)>40)d.querySelector(dx<0?".nx":".pv").click();});
 function atualizarLinks(){
   document.querySelectorAll("[data-wa='geral']").forEach(a=>a.href=waLink());
-  document.querySelectorAll("[data-p]").forEach(a=>a.href=waLink(a.dataset.p,a.dataset.q));
+  document.querySelectorAll("[data-p]").forEach(a=>a.href=a.dataset.dest?`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá, Jussara! Vi o destaque do mês no site do Penedo Reservas e quero saber das datas do ${a.dataset.p}.`)}`:waLink(a.dataset.p,a.dataset.q));
   document.querySelectorAll("[data-wa-msg]").forEach(a=>a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá, Jussara! Vi o site do Penedo Reservas Turismo e ${a.dataset.waMsg}.`)}`);
   document.querySelectorAll("[data-wa-cat]").forEach(a=>a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá, Jussara! Vi o site do Penedo Reservas Turismo e quero ver as opções de ${a.dataset.waCat} em Penedo. Pode me mandar?`)}`);
 }
@@ -253,7 +253,7 @@ function desenharDestaque(){
   const box=document.getElementById("destaque"); if(!box) return;
   const p=POUSADAS.find(x=>x.destaque);
   if(!p||SOLO){box.innerHTML="";return;}
-  box.innerHTML=`<a class="dest-box" href="/h/${esc(p.id)}"><span class="bg" aria-hidden="true" style="background-image:url('${esc(urlSegura(p.capa))}')"></span><div class="in"><span class="selo">★ Destaque</span><h3>${esc(p.nome)}</h3><p>${esc(p.local)} · ${esc(p.comodidades.slice(0,4).join(" · "))}</p><span class="go">Ver fotos e detalhes →</span></div></a>`;
+  box.innerHTML=`<a class="dest-box" href="/h/${esc(p.id)}"><span class="bg" aria-hidden="true" style="background-image:url('${esc(urlSegura(p.capa))}')"></span><div class="in"><span class="selo">★ Destaque do mês</span><h3>${esc(p.nome)}</h3><p>${esc(p.chamada||p.local)}</p><span class="go">Ver fotos e detalhes →</span></div></a>`;
 }
 function desenharCats(){
   document.getElementById("cats").innerHTML=CATEGORIAS.map(c=>{
