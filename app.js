@@ -63,6 +63,18 @@ const POUSADAS = [
     cena:0
   },
   {
+    id:"bosque", nome:"Pousada com Bosque e Área Kids", tipo:"Pousada",
+    local:"Ao lado do Shopping do Esquilo e do Posto BR",
+    desc:"Quartos confortáveis e café da manhã com opções caseiras. Tem piscina, área kids, bosque e redário.",
+    cat:"pousadas",
+    comodidades:["Piscina","Café da manhã caseiro","Área kids","Bosque","Redário","Ar-condicionado","Ventilador de teto","Camas box","TV via satélite"],
+    fotos:[],
+    quartos:[],
+    capa:"fotos/bosque/b01.jpg",
+    galeria:Array.from({length:38},(_,i)=>`fotos/bosque/b${String(i+1).padStart(2,"0")}.jpg`),
+    cena:0
+  },
+  {
     id:"martinelli", nome:"Casa Martinelli", tipo:"Casa · até 8 pessoas",
     local:"Penedo-RJ, cercada de verde e sossego",
     desc:"Casa térrea e ampla, com ambientes integrados, arejados e muito bem iluminados. Tem um gramado enorme e é ideal para quem quer descansar com conforto e acessibilidade.",
